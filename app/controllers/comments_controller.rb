@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.new(comments_params)
     @comment.user_id = current_user.id if current_user
-    
+
     if @comment.save
       redirect_to post_path(@post)
     else
@@ -19,10 +19,10 @@ class CommentsController < ApplicationController
   def update
     @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
-    
+
     if @comment.update(comments_params)
       redirect_to post_path(@post)
-    else 
+    else
       render 'edit'
     end
   end
